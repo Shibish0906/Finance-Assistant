@@ -1,103 +1,102 @@
-import Image from "next/image";
+"use client";
 
-export default function Home() {
+/**
+ * Landing page
+ *
+ * App landing page with hero and feature sections. This is the public
+ * homepage that introduces the product and links into the dashboard.
+ */
+import { motion } from "framer-motion";
+import { PieChart, TrendingUp, ShieldCheck } from "lucide-react";
+import Link from "next/link";
+
+export default function LandingPage() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <main className="min-h-screen bg-gray-50 flex flex-col">
+      {/* Hero Section */}
+      <section className="flex-1 flex flex-col items-center justify-center text-center px-6">
+        <motion.h1
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-5xl font-bold text-gray-900 mb-4"
+        >
+          Take Control of Your <span className="text-blue-600">Finances</span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2, duration: 0.6 }}
+          className="text-lg text-gray-600 max-w-2xl mb-8"
+        >
+          Track income, manage expenses, and visualize spending habits — all in one
+          simple, secure app.
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="flex gap-4"
+        >
+          <Link
+            href="/dashboard"
+            className="px-6 py-3 bg-blue-600 text-white rounded-md font-medium hover:bg-blue-700 transition"
+          >
+            Get Started
+          </Link>
+          <button className="px-6 py-3 bg-white border rounded-md font-medium hover:bg-gray-100 transition">
+            Learn More
+          </button>
+        </motion.div>
+      </section>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+      {/* Features Section */}
+      <section className="bg-white py-16 border-t">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-10 text-center">
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="p-6 bg-gray-50 rounded-xl shadow-sm"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            <PieChart className="mx-auto text-blue-600" size={36} />
+            <h3 className="mt-4 text-lg font-semibold text-gray-800">
+              Smart Analytics
+            </h3>
+            <p className="text-gray-600 mt-2">
+              Visualize your expenses by category, time, and more with easy-to-read
+              charts.
+            </p>
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="p-6 bg-gray-50 rounded-xl shadow-sm"
           >
-            Read our docs
-          </a>
+            <TrendingUp className="mx-auto text-blue-600" size={36} />
+            <h3 className="mt-4 text-lg font-semibold text-gray-800">
+              Stay on Track
+            </h3>
+            <p className="text-gray-600 mt-2">
+              Monitor income vs. expenses to always know your net balance.
+            </p>
+          </motion.div>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="p-6 bg-gray-50 rounded-xl shadow-sm"
+          >
+            <ShieldCheck className="mx-auto text-blue-600" size={36} />
+            <h3 className="mt-4 text-lg font-semibold text-gray-800">
+              Secure & Private
+            </h3>
+            <p className="text-gray-600 mt-2">
+              Your financial data stays encrypted and private. Always in your control.
+            </p>
+          </motion.div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-100 py-6 text-center text-sm text-gray-600">
+        © {new Date().getFullYear()} Finance Assistant. All rights reserved.
       </footer>
-    </div>
+    </main>
   );
 }

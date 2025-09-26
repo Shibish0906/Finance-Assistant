@@ -1,41 +1,55 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+# Node dependencies
+node_modules/
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.*
-.yarn/*
-!.yarn/patches
-!.yarn/plugins
-!.yarn/releases
-!.yarn/versions
+# Next.js build outputs
+.next/
+out/
 
-# testing
-/coverage
-
-# next.js
-/.next/
-/out/
-
-# production
+# Production build folder
 /build
 
-# misc
-.DS_Store
-*.pem
-
-# debug
+# Log files
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-.pnpm-debug.log*
+pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# Local environment variables (keep example files)
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+!.env.example
 
-# vercel
-.vercel
+# Vercel / deployment
+.vercel/
 
-# typescript
+# Editor directories and files
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# macOS files
+.DS_Store
+
+# TypeScript build cache
 *.tsbuildinfo
+
+# Next.js types
 next-env.d.ts
+
+# Tailwind/postcss/cache or temporary
+.cache/
+
+# Test coverage
+coverage/
+
+# Misc temp
+.tmp
+
+# Do NOT ignore lockfiles (keep package-lock.json committed)
+# Do NOT ignore Convex generated files in convex/_generated - they are
+# generally checked into the repo. Adjust if you prefer otherwise.
